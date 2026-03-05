@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pemancingan Suharno 2 - Spesialis Masakan Ikan Bandungan Semarang</title>
     
-    <!-- Favicon & PWA Icons (Sesuai struktur folder 'image') -->
+    <!-- Favicon & Icons (Sesuai aset lokal) -->
     <link rel="icon" type="image/x-icon" href="./image/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="./image/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./image/favicon-16x16.png">
@@ -25,7 +25,7 @@
     <meta property="og:type" content="restaurant">
     <meta property="og:title" content="Pemancingan Suharno 2 - Lezatnya Ikan Segar di Udara Sejuk">
     <meta property="og:description" content="Spesialis Gurami, Nila, Lele, Kalper bumbu Rujak & Bakar. Lokasi luas & nyaman di Jimbaran, Bandungan.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image" content="./image/makanan-5.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,6 +56,15 @@
                     },
                     boxShadow: {
                         'macos': '0 10px 30px -10px rgba(0, 0, 0, 0.1)',
+                    },
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-100%)' },
+                        }
                     }
                 }
             }
@@ -89,6 +98,10 @@
             width: 90%;
             max-width: 400px;
         }
+        /* Pause animation on hover */
+        .group:hover .animate-infinite-scroll {
+            animation-play-state: paused;
+        }
     </style>
 
     <!-- Schema.org JSON-LD -->
@@ -97,7 +110,7 @@
       "@context": "https://schema.org",
       "@type": "Restaurant",
       "name": "Pemancingan Suharno 2",
-      "image": "https://images.unsplash.com/photo-1544025162-d76694265947",
+      "image": "./image/suasana-1.jpg",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Jl. Agrowisata Mina Blater Jimbaran, Krandengan",
@@ -124,14 +137,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
                 
-                <!-- Logo Image (Menggunakan file lokal dari folder image) -->
+                <!-- Logo Image -->
                 <div class="flex-shrink-0 flex items-center cursor-pointer py-2" onclick="window.scrollTo(0,0)">
                     <img src="./image/android-chrome-512x512.png" alt="Logo Pemancingan Suharno 2" class="h-20 w-auto object-contain transition hover:scale-105 duration-300">
                 </div>
 
-                <!-- Desktop Menu -->
+                <!-- Desktop Menu (Updated Order) -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="text-gray-700 hover:text-brand-green font-medium transition">Beranda</a>
+                    <a href="#galeri" class="text-gray-700 hover:text-brand-green font-medium transition">Galeri</a>
                     <a href="#menu" class="text-gray-700 hover:text-brand-green font-medium transition">Menu</a>
                     <a href="#fasilitas" class="text-gray-700 hover:text-brand-green font-medium transition">Fasilitas</a>
                     <a href="#lokasi" class="text-gray-700 hover:text-brand-green font-medium transition">Lokasi</a>
@@ -157,6 +171,7 @@
              class="md:hidden bg-white shadow-xl border-t border-gray-100 absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-1">
                 <a href="#home" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Beranda</a>
+                <a href="#galeri" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Galeri</a>
                 <a href="#menu" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Menu</a>
                 <a href="#fasilitas" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Fasilitas</a>
                 <a href="#lokasi" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Lokasi</a>
@@ -167,8 +182,9 @@
     <!-- Hero Section -->
     <section id="home" class="relative pt-24 pb-32 flex items-center min-h-[90vh]">
         <div class="absolute inset-0 z-0">
-            <img src="https://i.ibb.co.com/d4BYYxHm/suharno-bg.jpg" alt="Suasana Restoran" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-green/95 to-black/50"></div>
+            <!-- Updated Background Image to Suasana-1.jpg -->
+            <img src="./image/background.jpg" alt="Suasana Pemancingan Suharno 2" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-green/95 to-black/40"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left pt-10">
@@ -194,47 +210,83 @@
         </div>
     </section>
 
-    <!-- Keunggulan Section -->
-    <section id="fasilitas" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-brand-green font-bold text-lg uppercase tracking-wider mb-2">Kenapa Suharno 2?</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Kenyamanan Untuk Keluarga</h3>
-            </div>
+    <!-- Instagram Slider Section (MOVED HERE) -->
+    <section id="galeri" class="py-16 bg-white overflow-hidden border-b border-gray-100">
+        <div class="text-center mb-10 px-4">
+            <span class="text-brand-green font-bold tracking-wider uppercase text-sm">Galeri Foto & Suasana</span>
+            <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="inline-flex items-center gap-2 mt-2">
+                <h2 class="text-3xl font-extrabold text-gray-900 hover:text-brand-red transition">@pemancingansuharno2</h2>
+                <svg class="w-6 h-6 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
-                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-brand-green">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                    </div>
-                    <h4 class="text-xl font-bold mb-3 text-gray-800">Area Terbuka & Luas</h4>
-                    <p class="text-gray-600">Nikmati angin sejuk Bandungan dengan pilihan tempat duduk outdoor yang asri.</p>
-                </div>
+        <!-- Slider Container -->
+        <div class="relative w-full flex group">
+            <!-- Infinite Scroll Wrapper -->
+            <div class="flex animate-infinite-scroll hover:pause gap-6 px-3">
                 
-                <!-- Feature 2 -->
-                <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
-                    <div class="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6 text-yellow-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <!-- Menggunakan Gambar dari Folder /image/ -->
+                <!-- Item 1 (Makanan) -->
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/makanan-5.jpg" alt="Ikan Gurami Bakar" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold flex items-center gap-2"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Lihat</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-3 text-gray-800">Ruang Makan Pribadi</h4>
-                    <p class="text-gray-600">Tersedia private room untuk acara keluarga, arisan, atau meeting yang lebih intim.</p>
-                </div>
+                </a>
 
-                <!-- Feature 3 -->
-                <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
-                    <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-6 text-brand-red">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <h4 class="text-xl font-bold mb-3 text-gray-800">Parkiran Luas</h4>
-                    <p class="text-gray-600">Akses mudah dengan area parkir yang mampu menampung banyak mobil dan bus.</p>
-                </div>
+                <!-- Item 2 (Suasana Depan) -->
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/suasana-2.jpg" alt="Suasana Depan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+
+                <!-- Item 3 (Makanan) -->
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/makanan-2.jpg" alt="Olahan Ikan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+
+                <!-- Item 4 (Minuman) -->
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/minuman-2.jpg" alt="Aneka Minuman" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+
+                <!-- Item 5 (Suasana Dalam) -->
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/suasana-3.jpg" alt="Area Makan Luas" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+
+                <!-- Item 6 (Makanan Bakar) -->
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/makanan-8.jpg" alt="Ikan Bakar Spesial" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+
+                 <!-- Item 7 (Suasana Lesehan) -->
+                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/suasana-4.jpg" alt="Suasana Lesehan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+
+                <!-- DUPLICATE FOR INFINITE SCROLL EFFECT -->
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/makanan-5.jpg" alt="Ikan Gurami Bakar" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/suasana-2.jpg" alt="Suasana Depan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/makanan-2.jpg" alt="Olahan Ikan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/minuman-2.jpg" alt="Aneka Minuman" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+                <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
+                    <img src="./image/suasana-3.jpg" alt="Area Makan Luas" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
+                </a>
+
             </div>
         </div>
     </section>
 
-    <!-- Menu Section (PDF Embed) -->
-    <section id="menu" class="py-20 bg-white">
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Daftar Menu Lengkap</span>
@@ -244,7 +296,6 @@
 
             <!-- PDF Embed Container -->
             <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-macos border border-gray-200 relative h-[80vh] w-full">
-                <!-- Google Drive PDF Embed -->
                 <iframe 
                     src="https://drive.google.com/file/d/13-3Axmcxyj-pazebJG5RdFIiBC-s4h9c/preview" 
                     class="w-full h-full border-0" 
@@ -252,12 +303,50 @@
                 </iframe>
             </div>
 
-            <!-- Fallback / Download Button -->
             <div class="mt-8 text-center">
                 <a href="https://drive.google.com/file/d/1l__qfUSkSGDltD1PlC06MniI5kRxc7Gh/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 bg-brand-green text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-green-800 transition transform hover:-translate-y-1">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                     Buka / Download Menu PDF
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Section -->
+    <section id="fasilitas" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-brand-green font-bold text-lg uppercase tracking-wider mb-2">Kenapa Suharno 2?</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Kenyamanan Untuk Keluarga</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-brand-green">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-gray-800">Area Terbuka & Luas</h4>
+                    <p class="text-gray-600">Nikmati angin sejuk Bandungan dengan pilihan tempat duduk outdoor yang asri.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6 text-yellow-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-gray-800">Ruang Makan Pribadi</h4>
+                    <p class="text-gray-600">Tersedia private room untuk acara keluarga, arisan, atau meeting yang lebih intim.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
+                    <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-6 text-brand-red">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-gray-800">Parkiran Luas</h4>
+                    <p class="text-gray-600">Akses mudah dengan area parkir yang mampu menampung banyak mobil dan bus.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -303,7 +392,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
-                    <!-- Footer Logo (Menggunakan file lokal dari folder image) -->
+                    <!-- Footer Logo -->
                     <div class="mb-4">
                         <img src="./image/android-chrome-512x512.png" alt="Logo Suharno 2" class="h-24 w-auto object-contain">
                     </div>
