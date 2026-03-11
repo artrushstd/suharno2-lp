@@ -52,7 +52,7 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans:['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     boxShadow: {
                         'macos': '0 10px 30px -10px rgba(0, 0, 0, 0.1)',
@@ -144,7 +144,8 @@
     }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden" x-data="{ scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden" x-data="{ scrolled: false, showBackToTop: false }" @scroll.window="scrolled = (window.pageYOffset > 20); showBackToTop = (window.pageYOffset > 400)">
 
     <!-- Navbar -->
     <nav :class="scrolled ? 'glass shadow-sm' : 'bg-transparent'" class="fixed w-full z-50 transition-all duration-300" x-data="{ open: false }">
@@ -152,7 +153,7 @@
             <div class="flex justify-between items-center h-24">
                 
                 <!-- Logo Image -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer py-2" onclick="window.scrollTo(0,0)">
+                <div class="flex-shrink-0 flex items-center cursor-pointer py-2" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                     <img src="./image/android-chrome-512x512.png" alt="Logo Pemancingan Suharno 2" class="h-20 w-auto object-contain transition hover:scale-105 duration-300">
                 </div>
 
@@ -163,6 +164,7 @@
                     <a href="#fasilitas" class="text-gray-700 hover:text-brand-green transition">Fasilitas</a>
                     <a href="#menu" class="text-gray-700 hover:text-brand-green transition">Menu</a>
                     <a href="#lokasi" class="text-gray-700 hover:text-brand-green transition">Lokasi</a>
+                    <a href="#faq" class="text-gray-700 hover:text-brand-green transition">FAQ</a>
                     <a href="#snk" class="text-gray-700 hover:text-brand-green transition">S&K</a>
                     <a href="https://wa.me/6282281819800?text=Halo%20Suharno%202,%20saya%20ingin%20reservasi" class="bg-brand-red text-white px-5 py-2 rounded-xl font-bold shadow-lg shadow-red-500/30 hover:bg-red-700 transition transform hover:scale-105">
                         Reservasi
@@ -190,6 +192,7 @@
                 <a href="#fasilitas" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Fasilitas</a>
                 <a href="#menu" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Menu</a>
                 <a href="#lokasi" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Lokasi</a>
+                <a href="#faq" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">FAQ</a>
                 <a href="#snk" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Syarat & Ketentuan</a>
             </div>
         </div>
@@ -288,7 +291,7 @@
         </div>
     </section>
 
-    <!-- Keunggulan / Fasilitas Section (Diperbarui) -->
+    <!-- Keunggulan / Fasilitas Section -->
     <section id="fasilitas" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -296,7 +299,6 @@
                 <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Kenyamanan Ekstra Untuk Keluarga</h3>
             </div>
 
-            <!-- Diubah menjadi 4 Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Fasilitas 1 -->
                 <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300 reveal">
@@ -307,7 +309,7 @@
                     <p class="text-gray-600 text-sm">Nikmati angin sejuk Bandungan dengan pilihan tempat duduk outdoor maupun lesehan yang asri.</p>
                 </div>
                 
-                <!-- Fasilitas 2 (Mini Pool) -->
+                <!-- Fasilitas 2 -->
                 <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300 reveal">
                     <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
@@ -316,7 +318,7 @@
                     <p class="text-gray-600 text-sm">Tersedia fasilitas kolam renang anak (mini pool) agar si kecil tidak bosan saat berkunjung.</p>
                 </div>
 
-                <!-- Fasilitas 3 (Cafe) -->
+                <!-- Fasilitas 3 -->
                 <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300 reveal">
                     <div class="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6 text-yellow-600">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01"></path></svg>
@@ -325,7 +327,7 @@
                     <p class="text-gray-600 text-sm">Nikmati ragam minuman kopi, non-kopi, dan camilan ringan di area khusus cafe kami.</p>
                 </div>
 
-                <!-- Fasilitas 4 (Parkir) -->
+                <!-- Fasilitas 4 -->
                 <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300 reveal">
                     <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-6 text-brand-red">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
@@ -346,11 +348,9 @@
                 <p class="mt-4 text-gray-600">Saksikan sekilas kelezatan aneka olahan ikan dan menu favorit kami melalui video berikut.</p>
             </div>
 
-            <!-- YouTube Video Embed -->
-            <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-2xl border border-gray-200 relative reveal">
-                <div class="video-container">
-                    <!-- TUKAR LINK DI BAWAH INI DENGAN LINK EMBED YOUTUBE ANDA -->
-                    <!-- Contoh penulisan src: src="https://www.youtube.com/embed/g8J1uYQ3-hA" -->
+            <div class="flex justify-center reveal">
+                <div class="w-full max-w-sm bg-gray-100 rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
+                    <div class="relative w-full pb-[177.77%] h-0">
                         <iframe 
                             class="absolute top-0 left-0 w-full h-full"
                             src="https://www.youtube.com/embed/3PGAOxoPkZI?autoplay=1&mute=1&loop=1&playlist=3PGAOxoPkZI" 
@@ -359,13 +359,14 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             allowfullscreen>
                         </iframe>
+                    </div>
                 </div>
             </div>
 
             <div class="mt-10 text-center reveal">
                 <a href="https://wa.me/6282281819800?text=Halo%20Suharno%202,%20saya%20ingin%20meminta%20katalog%20menu" target="_blank" class="inline-flex items-center gap-2 bg-brand-green text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:bg-green-800 transition transform hover:-translate-y-1">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    Pesan & Minta Katalog Menu
+                    Pesan & Minta Katalog Menu Via WhatsApp
                 </a>
             </div>
         </div>
@@ -407,8 +408,100 @@
         </div>
     </section>
 
-    <!-- Syarat & Ketentuan Section (FAQ) -->
-    <section id="snk" class="py-20 bg-white">
+    <!-- FAQ Section (BARU) -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-green font-bold tracking-wider uppercase text-sm">Pusat Bantuan</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+            </div>
+            
+            <div class="space-y-4 reveal" x-data="{ active: null }">
+                <!-- FAQ Item 1 -->
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300">
+                    <button @click="active !== 1 ? active = 1 : active = null" class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="font-bold text-gray-800 text-left">Apakah buka setiap hari? Jam berapa operasionalnya?</span>
+                        <svg class="w-5 h-5 text-brand-green transform transition-transform duration-300 flex-shrink-0" :class="{'rotate-180': active === 1}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="active === 1" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 -translate-y-2"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         style="display: none;"
+                         class="px-6 pb-6 text-gray-600 leading-relaxed">
+                        Ya, kami buka setiap hari mulai pukul <strong>08.00 hingga 21.00 WIB</strong>. Kami siap melayani Anda mulai dari waktu sarapan, makan siang, hingga makan malam.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300">
+                    <button @click="active !== 2 ? active = 2 : active = null" class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="font-bold text-gray-800 text-left">Apakah harus reservasi dulu sebelum datang?</span>
+                        <svg class="w-5 h-5 text-brand-green transform transition-transform duration-300 flex-shrink-0" :class="{'rotate-180': active === 2}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="active === 2" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 -translate-y-2"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         style="display: none;"
+                         class="px-6 pb-6 text-gray-600 leading-relaxed">
+                        Untuk hari biasa (weekday), Anda bisa langsung datang. Namun untuk <strong>akhir pekan (weekend) dan hari libur nasional</strong>, kami sangat menyarankan untuk reservasi tempat dan menu terlebih dahulu agar Anda pasti mendapatkan tempat yang nyaman tanpa harus antre panjang.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300">
+                    <button @click="active !== 3 ? active = 3 : active = null" class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="font-bold text-gray-800 text-left">Apakah tempat ini cocok untuk acara rombongan besar / gathering?</span>
+                        <svg class="w-5 h-5 text-brand-green transform transition-transform duration-300 flex-shrink-0" :class="{'rotate-180': active === 3}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="active === 3" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 -translate-y-2"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         style="display: none;"
+                         class="px-6 pb-6 text-gray-600 leading-relaxed">
+                        Sangat cocok! Kami memiliki area makan yang sangat luas, fasilitas lesehan maupun duduk di kursi, ruang lantai 2 untuk area acara dengan pengeras suara, serta parkiran luas yang mampu menampung rombongan bus besar sekalipun.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300">
+                    <button @click="active !== 4 ? active = 4 : active = null" class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="font-bold text-gray-800 text-left">Selain ikan, apakah ada menu makanan lain?</span>
+                        <svg class="w-5 h-5 text-brand-green transform transition-transform duration-300 flex-shrink-0" :class="{'rotate-180': active === 4}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="active === 4" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 -translate-y-2"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         style="display: none;"
+                         class="px-6 pb-6 text-gray-600 leading-relaxed">
+                        Fokus utama kami memang olahan ikan segar. Namun kami juga menyediakan aneka olahan sayuran segar khas Bandungan, lauk pendamping lainnya, serta <strong>Area Cafe</strong> yang menyajikan camilan ringan, minuman kopi, dan non-kopi kekinian.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300">
+                    <button @click="active !== 5 ? active = 5 : active = null" class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="font-bold text-gray-800 text-left">Apakah tempat ini ramah untuk membawa anak-anak?</span>
+                        <svg class="w-5 h-5 text-brand-green transform transition-transform duration-300 flex-shrink-0" :class="{'rotate-180': active === 5}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="active === 5" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 -translate-y-2"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         style="display: none;"
+                         class="px-6 pb-6 text-gray-600 leading-relaxed">
+                        Tentu saja! Kami memiliki area terbuka yang lega dan aman. Kami juga menyediakan fasilitas <strong>Mini Pool (kolam renang anak)</strong> agar anak-anak betah dan senang bermain selagi menunggu hidangan disajikan.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syarat & Ketentuan Section -->
+    <section id="snk" class="py-20 bg-gray-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 reveal">
                 <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Penting Untuk Diketahui</span>
@@ -418,7 +511,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Kolom 1: Pemesanan -->
-                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 shadow-sm reveal">
+                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm reveal">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="p-2 bg-brand-yellow/20 rounded-lg text-yellow-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
@@ -435,7 +528,7 @@
                 </div>
 
                 <!-- Kolom 2: Fasilitas & Waktu -->
-                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 shadow-sm reveal">
+                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm reveal">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="p-2 bg-brand-green/10 rounded-lg text-brand-green">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -511,6 +604,21 @@
             Info dan Reservasi
         </a>
     </div>
+
+    <!-- Floating Back to Top Button -->
+    <button 
+        @click="window.scrollTo({top: 0, behavior: 'smooth'})"
+        x-show="showBackToTop"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-10"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-10"
+        class="fixed z-50 bottom-[90px] md:bottom-10 right-4 md:right-8 p-3 md:p-4 bg-white text-brand-green border border-gray-200 rounded-full shadow-macos hover:bg-brand-green hover:text-white transition-all duration-300 transform hover:scale-110 focus:outline-none"
+        aria-label="Kembali ke atas">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"></path></svg>
+    </button>
 
     <!-- Scroll Reveal Script -->
     <script>
