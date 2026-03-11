@@ -15,7 +15,7 @@
     <link rel="manifest" href="./image/site.webmanifest">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Nikmati olahan Gurami, Nila, Lele, dan Kalper terbaik dengan bumbu bakar, rujak, dan asam manis di Bandungan. Tempat luas, parkir nyaman, cocok untuk keluarga.">
+    <meta name="description" content="Nikmati olahan Gurami, Nila, Lele, dan Kalper terbaik dengan bumbu bakar, rujak, dan asam manis di Bandungan. Tempat luas, parkir nyaman, ada mini pool dan area cafe.">
     <meta name="keywords" content="Pemancingan Suharno 2, Kuliner Bandungan, Ikan Bakar Jimbaran, Restoran Keluarga Semarang, Gurami Bakar, Wisata Kuliner Bandungan">
     <meta name="author" content="Pemancingan Suharno 2">
     <meta name="robots" content="index, follow">
@@ -63,7 +63,7 @@
                     keyframes: {
                         'infinite-scroll': {
                             from: { transform: 'translateX(0)' },
-                            to: { transform: 'translateX(-100%)' },
+                            to: { transform: 'translateX(-50%)' },
                         }
                     }
                 }
@@ -101,6 +101,20 @@
         /* Pause animation on hover */
         .group:hover .animate-infinite-scroll {
             animation-play-state: paused;
+        }
+        /* YouTube Embed Aspect Ratio container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 
@@ -142,20 +156,21 @@
                     <img src="./image/android-chrome-512x512.png" alt="Logo Pemancingan Suharno 2" class="h-20 w-auto object-contain transition hover:scale-105 duration-300">
                 </div>
 
-                <!-- Desktop Menu (Updated Order) -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-gray-700 hover:text-brand-green font-medium transition">Beranda</a>
-                    <a href="#galeri" class="text-gray-700 hover:text-brand-green font-medium transition">Galeri</a>
-                    <a href="#menu" class="text-gray-700 hover:text-brand-green font-medium transition">Menu</a>
-                    <a href="#fasilitas" class="text-gray-700 hover:text-brand-green font-medium transition">Fasilitas</a>
-                    <a href="#lokasi" class="text-gray-700 hover:text-brand-green font-medium transition">Lokasi</a>
-                    <a href="https://wa.me/6282281819800?text=Halo%20Suharno%202,%20saya%20ingin%20reservasi" class="bg-brand-red text-white px-6 py-2.5 rounded-xl font-bold shadow-lg shadow-red-500/30 hover:bg-red-700 transition transform hover:scale-105">
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-6 items-center text-sm font-semibold">
+                    <a href="#home" class="text-gray-700 hover:text-brand-green transition">Beranda</a>
+                    <a href="#galeri" class="text-gray-700 hover:text-brand-green transition">Galeri</a>
+                    <a href="#fasilitas" class="text-gray-700 hover:text-brand-green transition">Fasilitas</a>
+                    <a href="#menu" class="text-gray-700 hover:text-brand-green transition">Video Menu</a>
+                    <a href="#lokasi" class="text-gray-700 hover:text-brand-green transition">Lokasi</a>
+                    <a href="#snk" class="text-gray-700 hover:text-brand-green transition">S&K</a>
+                    <a href="https://wa.me/6282281819800?text=Halo%20Suharno%202,%20saya%20ingin%20reservasi" class="bg-brand-red text-white px-5 py-2 rounded-xl font-bold shadow-lg shadow-red-500/30 hover:bg-red-700 transition transform hover:scale-105">
                         Reservasi
                     </a>
                 </div>
 
                 <!-- Mobile Button -->
-                <div class="md:hidden flex items-center">
+                <div class="lg:hidden flex items-center">
                     <button @click="open = !open" class="text-brand-green p-2">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
@@ -168,13 +183,14 @@
              x-transition:enter="transition ease-out duration-200"
              x-transition:enter-start="opacity-0 -translate-y-2"
              x-transition:enter-end="opacity-100 translate-y-0"
-             class="md:hidden bg-white shadow-xl border-t border-gray-100 absolute w-full">
+             class="lg:hidden bg-white shadow-xl border-t border-gray-100 absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-1">
                 <a href="#home" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Beranda</a>
                 <a href="#galeri" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Galeri</a>
-                <a href="#menu" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Menu</a>
                 <a href="#fasilitas" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Fasilitas</a>
+                <a href="#menu" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Video Menu</a>
                 <a href="#lokasi" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Lokasi</a>
+                <a href="#snk" @click="open = false" class="block px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 rounded-lg">Syarat & Ketentuan</a>
             </div>
         </div>
     </nav>
@@ -182,7 +198,6 @@
     <!-- Hero Section -->
     <section id="home" class="relative pt-24 pb-32 flex items-center min-h-[90vh]">
         <div class="absolute inset-0 z-0">
-            <!-- Updated Background Image to Suasana-1.jpg -->
             <img src="./image/background.jpg" alt="Suasana Pemancingan Suharno 2" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-brand-green/95 to-black/40"></div>
         </div>
@@ -200,7 +215,7 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                     <a href="#menu" class="px-8 py-4 bg-brand-red text-white font-bold rounded-2xl shadow-xl hover:bg-red-700 transition transform hover:-translate-y-1">
-                        Lihat Menu
+                        Lihat Video Menu
                     </a>
                     <a href="https://wa.me/6282281819800" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold rounded-2xl hover:bg-white/20 transition">
                         Hubungi Kami
@@ -210,9 +225,9 @@
         </div>
     </section>
 
-    <!-- Instagram Slider Section (MOVED HERE) -->
+    <!-- Instagram Slider Section -->
     <section id="galeri" class="py-16 bg-white overflow-hidden border-b border-gray-100">
-        <div class="text-center mb-10 px-4">
+        <div class="text-center mb-10 px-4 reveal">
             <span class="text-brand-green font-bold tracking-wider uppercase text-sm">Galeri Foto & Suasana</span>
             <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="inline-flex items-center gap-2 mt-2">
                 <h2 class="text-3xl font-extrabold text-gray-900 hover:text-brand-red transition">@pemancingansuharno2</h2>
@@ -220,51 +235,33 @@
             </a>
         </div>
 
-        <!-- Slider Container -->
-        <div class="relative w-full flex group">
-            <!-- Infinite Scroll Wrapper -->
-            <div class="flex animate-infinite-scroll hover:pause gap-6 px-3">
+        <div class="relative w-full flex group overflow-hidden">
+            <div class="flex animate-infinite-scroll hover:pause gap-6 px-3 w-max">
                 
-                <!-- Menggunakan Gambar dari Folder /image/ -->
-                <!-- Item 1 (Makanan) -->
+                <!-- ORIGINAL ITEMS -->
                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/makanan-5.jpg" alt="Ikan Gurami Bakar" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition duration-300 flex items-center justify-center">
-                        <span class="text-white font-bold flex items-center gap-2"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Lihat</span>
-                    </div>
                 </a>
-
-                <!-- Item 2 (Suasana Depan) -->
                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/suasana-2.jpg" alt="Suasana Depan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
                 </a>
-
-                <!-- Item 3 (Makanan) -->
                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/makanan-2.jpg" alt="Olahan Ikan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
                 </a>
-
-                <!-- Item 4 (Minuman) -->
                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/minuman-2.jpg" alt="Aneka Minuman" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
                 </a>
-
-                <!-- Item 5 (Suasana Dalam) -->
                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/suasana-3.jpg" alt="Area Makan Luas" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
                 </a>
-
-                <!-- Item 6 (Makanan Bakar) -->
                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/makanan-8.jpg" alt="Ikan Bakar Spesial" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
                 </a>
-
-                 <!-- Item 7 (Suasana Lesehan) -->
                  <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/suasana-4.jpg" alt="Suasana Lesehan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
                 </a>
 
-                <!-- DUPLICATE FOR INFINITE SCROLL EFFECT -->
+                <!-- DUPLICATE ITEMS FOR SCROLL -->
                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/makanan-5.jpg" alt="Ikan Gurami Bakar" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
                 </a>
@@ -286,74 +283,88 @@
                 <a href="https://www.instagram.com/pemancingansuharno2/" target="_blank" class="block w-64 h-64 flex-shrink-0 relative rounded-2xl overflow-hidden shadow-lg group/item cursor-pointer">
                     <img src="./image/suasana-4.jpg" alt="Suasana Lesehan" class="w-full h-full object-cover transition duration-500 group-hover/item:scale-110">
                 </a>
-                
 
             </div>
         </div>
     </section>
 
-    <!-- Menu Section -->
-    <section id="menu" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Daftar Menu Lengkap</span>
-                <h2 class="text-4xl font-extrabold text-gray-900 mt-2">Pilihan Menu Kami</h2>
-                <p class="mt-4 text-gray-600">Simak daftar menu lengkap Pemancingan Suharno 2 berikut ini.</p>
-            </div>
-
-            <!-- PDF Embed Container -->
-            <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-macos border border-gray-200 relative h-[80vh] w-full">
-                <iframe 
-                    src="https://drive.google.com/file/d/13-3Axmcxyj-pazebJG5RdFIiBC-s4h9c/preview" 
-                    class="w-full h-full border-0" 
-                    allow="autoplay">
-                </iframe>
-            </div>
-
-            <div class="mt-8 text-center">
-                <a href="https://drive.google.com/file/d/1l__qfUSkSGDltD1PlC06MniI5kRxc7Gh/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 bg-brand-green text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-green-800 transition transform hover:-translate-y-1">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    Buka / Download Menu PDF
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Keunggulan Section -->
-    <section id="fasilitas" class="py-20 bg-white">
+    <!-- Keunggulan / Fasilitas Section (Diperbarui) -->
+    <section id="fasilitas" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-brand-green font-bold text-lg uppercase tracking-wider mb-2">Kenapa Suharno 2?</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Kenyamanan Untuk Keluarga</h3>
+                <h2 class="text-brand-green font-bold text-lg uppercase tracking-wider mb-2">Fasilitas Kami</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Kenyamanan Ekstra Untuk Keluarga</h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-gray-50 rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
+            <!-- Diubah menjadi 4 Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Fasilitas 1 -->
+                <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300 reveal">
                     <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-brand-green">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold mb-3 text-gray-800">Area Terbuka & Luas</h4>
-                    <p class="text-gray-600">Nikmati angin sejuk Bandungan dengan pilihan tempat duduk outdoor yang asri.</p>
+                    <p class="text-gray-600 text-sm">Nikmati angin sejuk Bandungan dengan pilihan tempat duduk outdoor maupun lesehan yang asri.</p>
                 </div>
                 
-                <!-- Feature 2 -->
-                <div class="bg-gray-50 rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
-                    <div class="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6 text-yellow-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <!-- Fasilitas 2 (Mini Pool) -->
+                <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-3 text-gray-800">Ruang Makan Pribadi</h4>
-                    <p class="text-gray-600">Tersedia private room untuk acara keluarga, arisan, atau meeting yang lebih intim.</p>
+                    <h4 class="text-xl font-bold mb-3 text-gray-800">Mini Pool Anak</h4>
+                    <p class="text-gray-600 text-sm">Tersedia fasilitas kolam renang anak (mini pool) agar si kecil tidak bosan saat berkunjung.</p>
                 </div>
 
-                <!-- Feature 3 -->
-                <div class="bg-gray-50 rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300">
-                    <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-6 text-brand-red">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <!-- Fasilitas 3 (Cafe) -->
+                <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300 reveal">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6 text-yellow-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-3 text-gray-800">Parkiran Luas</h4>
-                    <p class="text-gray-600">Akses mudah dengan area parkir yang mampu menampung banyak mobil dan bus.</p>
+                    <h4 class="text-xl font-bold mb-3 text-gray-800">Area Cafe Nyaman</h4>
+                    <p class="text-gray-600 text-sm">Nikmati ragam minuman kopi, non-kopi, dan camilan ringan di area khusus cafe kami.</p>
                 </div>
+
+                <!-- Fasilitas 4 (Parkir) -->
+                <div class="bg-white rounded-3xl p-8 shadow-macos border border-gray-100 transform hover:-translate-y-2 transition duration-300 reveal">
+                    <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-6 text-brand-red">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-gray-800">Parkiran Sangat Luas</h4>
+                    <p class="text-gray-600 text-sm">Akses masuk yang mudah dengan area parkir yang sanggup menampung banyak mobil hingga bus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section (YouTube Preview) -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 reveal">
+                <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Video Preview Menu</span>
+                <h2 class="text-4xl font-extrabold text-gray-900 mt-2">Daftar Pilihan Menu</h2>
+                <p class="mt-4 text-gray-600">Saksikan sekilas kelezatan aneka olahan ikan dan menu favorit kami melalui video berikut.</p>
+            </div>
+
+            <!-- YouTube Video Embed -->
+            <div class="bg-gray-100 rounded-3xl overflow-hidden shadow-2xl border border-gray-200 relative reveal">
+                <div class="video-container">
+                    <!-- TUKAR LINK DI BAWAH INI DENGAN LINK EMBED YOUTUBE ANDA -->
+                    <!-- Contoh penulisan src: src="https://www.youtube.com/embed/g8J1uYQ3-hA" -->
+                    <iframe 
+                        src="MASUKKAN_LINK_YOUTUBE_EMBED_DISINI" 
+                        title="Video Preview Menu Suharno 2"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center reveal">
+                <a href="https://wa.me/6282281819800?text=Halo%20Suharno%202,%20saya%20ingin%20meminta%20katalog%20menu" target="_blank" class="inline-flex items-center gap-2 bg-brand-green text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:bg-green-800 transition transform hover:-translate-y-1">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    Pesan & Minta Katalog Menu
+                </a>
             </div>
         </div>
     </section>
@@ -361,7 +372,7 @@
     <!-- Location & Map Section -->
     <section id="lokasi" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row">
+            <div class="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row reveal">
                 <!-- Info -->
                 <div class="p-10 md:w-1/3 flex flex-col justify-center bg-brand-green text-white">
                     <h3 class="text-3xl font-bold mb-6">Kunjungi Kami</h3>
@@ -389,6 +400,66 @@
                         referrerpolicy="no-referrer-when-downgrade"
                         src="https://www.google.com/maps?q=-7.227284,110.399997&hl=id&z=15&output=embed">
                     </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syarat & Ketentuan Section (FAQ) -->
+    <section id="snk" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <span class="text-brand-red font-bold tracking-wider uppercase text-sm">Penting Untuk Diketahui</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">Syarat & Ketentuan Reservasi</h2>
+                <p class="mt-4 text-gray-600">Harap membaca peraturan dan kebijakan kami sebelum melakukan pemesanan tempat.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Kolom 1: Pemesanan -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 shadow-sm reveal">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-brand-yellow/20 rounded-lg text-yellow-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Pemesanan & Pembayaran</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Pesan tempat wajib sekalian pesan menu.</li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Reservasi hari biasa, bisa langsung pelunasan.</li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Uang Muka (DP) minimal 30% dari jumlah total.</li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-red mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> Pembatalan = DP hangus (kecuali penjadwalan ulang sebelum hari-H).</li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-red mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> Perubahan & penambahan menu maksimal 1 hari sebelum hari-H. Dihari-H via online tidak kami respon.</li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 2: Fasilitas & Waktu -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 shadow-sm reveal">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-brand-green/10 rounded-lg text-brand-green">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Waktu & Fasilitas</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Pemakaian tempat dan fasilitas maksimal 3 jam (terhitung dari jam reservasi).</li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Kelebihan jam charge Rp 200.000/Jam (jika tidak ada rombongan lain di tempat yang sama setelahnya).</li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Untuk pengguna fasilitas pengeras suara (wajib lantai 2), penempatan kami yang menentukan.</li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-red mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> Keterlambatan datang di atas 1 jam tanpa konfirmasi, lokasi tempat duduk akan diacak / random.</li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Larangan -->
+                <div class="bg-red-50 border border-red-100 rounded-3xl p-8 shadow-sm reveal">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 bg-brand-red/10 rounded-lg text-brand-red">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Perhatian & Larangan</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-800">
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-red mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg> <b>Dilarang</b> membawa hewan peliharaan ke dalam area lokasi pemancingan Suharno 2.</li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-red mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg> <b>Dilarang</b> membawa makanan dan minuman dari luar restoran.</li>
+                    </ul>
                 </div>
             </div>
         </div>
